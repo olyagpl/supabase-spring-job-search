@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://db.kaqgqqlybagqbxjvtwbu.supabase.co:5432/postgres
+    username: postgres
+    password: ${SUPABASE_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  sql:
+    init:
+      mode: never
+
+  thymeleaf:
+    cache: false

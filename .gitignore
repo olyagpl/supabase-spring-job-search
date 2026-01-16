@@ -1,0 +1,7 @@
+# Build results
+cp.txt
+target/
+
+# VS Code
+.vscode/
+.DS_Store
