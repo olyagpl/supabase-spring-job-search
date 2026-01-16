@@ -1,6 +1,7 @@
 package com.example.supabase_native_demo;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -13,7 +14,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/")
-    public String form() {
+    public String form(@RequestParam(required = false) String success, Model model) {
+        model.addAttribute("success", success);
         return "employee-form";
     }
 
@@ -23,9 +25,8 @@ public class EmployeeController {
             @RequestParam String position,
             @RequestParam int yearsOfExperience
     ) {
-        repository.save(
-            new Employee(name, position, yearsOfExperience)
-        );
-        return "redirect:/";
+        repository.save(new Employee(name, position, yearsOfExperience));
+        // Redirect with success query parameter
+        return "redirect:/?success=Employee+added+successfully!";
     }
 }

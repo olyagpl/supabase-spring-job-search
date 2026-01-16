@@ -3,12 +3,15 @@
 <head>
   <title>Employee Entry</title>
   <link rel="stylesheet" th:href="@{/css/styles.css}">
-  <!-- <link rel="stylesheet" href="/css/styles.css"/> -->
 </head>
-
 <body>
   <div class="container">
     <h2>Add Employee</h2>
+
+    <!-- Success message -->
+    <div th:if="${success}" class="success-message">
+      <p th:text="${success}"></p>
+    </div>
 
     <form action="/employees" method="post">
       <label>Name</label>
@@ -22,6 +25,21 @@
 
       <button type="submit">Save</button>
     </form>
+
+    <!-- Dark mode toggle -->
+    <div class="dark-mode-toggle">
+      <label>
+        <input type="checkbox" id="darkModeSwitch">
+        Dark Mode
+      </label>
+    </div>
   </div>
+
+  <script>
+    const toggle = document.getElementById('darkModeSwitch');
+    toggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark-mode', toggle.checked);
+    });
+  </script>
 </body>
 </html>
